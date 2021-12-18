@@ -6,11 +6,13 @@ class InputField extends StatelessWidget {
     required this.hint,
     required this.onSaved,
     required this.validator,
+    required this.keyboardType,
   }) : super(key: key);
 
   final String hint;
   final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class InputField extends StatelessWidget {
         ),
         onSaved: onSaved,
         validator: validator,
+        keyboardType: keyboardType,
       ),
     );
   }

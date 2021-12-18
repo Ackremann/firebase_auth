@@ -1,5 +1,6 @@
 import 'package:firebase_auth/core/validator/validator.dart';
 import 'package:firebase_auth/features/home/view.dart';
+import 'package:firebase_auth/features/login/view.dart';
 import 'package:firebase_auth/features/signup/controller.dart';
 import 'package:firebase_auth/widgets/input_field.dart';
 import 'package:firebase_auth/widgets/snack_bar.dart';
@@ -31,11 +32,13 @@ class _SignupViewState extends State<SignupView> {
               hint: 'Pls enter your Email',
               onSaved: (v) => controller.email = v!,
               validator: Validator.email,
+              keyboardType: TextInputType.emailAddress,
             ),
             InputField(
               hint: 'Pls enter your Password',
               onSaved: (v) => controller.password = v!,
               validator: Validator.password,
+              keyboardType: TextInputType.number,
             ),
             controller.loasding
                 ? CupertinoActivityIndicator()
@@ -63,7 +66,16 @@ class _SignupViewState extends State<SignupView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Have an account ?'),
-                TextButton(onPressed: () {}, child: Text('Login now!')),
+                TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginView(),
+                        ),
+                      );
+                    },
+                    child: Text('Login now!')),
               ],
             ),
           ],
