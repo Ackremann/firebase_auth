@@ -26,9 +26,9 @@ class LogInController {
       );
       if (respone.statusCode == 200 && respone.data['registered']) {
         await AppStorage.cachUserData(
-          email: email,
-          apiToken: 'idToken',
-          uid: 'localId',
+          email: respone.data['email'],
+          apiToken: respone.data['idToken'],
+          uid: respone.data['localId'],
         );
         return 'ok';
       } else {
